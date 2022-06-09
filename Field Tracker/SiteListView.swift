@@ -15,12 +15,6 @@ struct SiteListView: View {
                     SiteView(site: site)
                 }
                 .swipeActions {
-                    Button("Delete", action: {
-                        if let pos = sites.firstIndex(of: site) {
-                            sites.remove(at: pos)
-                        }
-                    })
-                    .tint(.red)
                     Button("Edit", action: {
                         tempSiteData.name = site.name
                         tempSiteData.dataEntries = site.dataEntries
@@ -31,6 +25,12 @@ struct SiteListView: View {
                         isPresentingNewSiteView = true
                     })
                     .tint(.green)
+                    Button("Delete", action: {
+                        if let pos = sites.firstIndex(of: site) {
+                            sites.remove(at: pos)
+                        }
+                    })
+                    .tint(.red)
                 }
                 .listRowBackground(site.theme.mainColor)
                 .foregroundColor(site.theme.accentColor)
